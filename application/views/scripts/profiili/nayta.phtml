@@ -1,0 +1,8 @@
+<?php $auth = Zend_Auth::getInstance(); ?>
+<?php if($auth->hasIdentity()) : ?>
+	<h1>Profiili <?= $auth->getIdentity()->tunnus; ?></h1>
+	
+	<p>Halutessasi voit <a href="<?= $this->url(Array('controller' => 'kayttaja', 'action' => 'paivita', 'id' => $auth->getIdentity()->id)); ?>">päivittää</a> profiilisi</p>
+<?php else : ?>
+	<p class="palsta">Kirjaudu sisään, jotta pääset profiiliisi.</p>
+<?php endif ?>

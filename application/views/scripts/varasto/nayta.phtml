@@ -1,0 +1,33 @@
+<h1>Tuotteen <?= $this->ostot[0]['nimi']; ?> ostot</h1>
+
+<table>
+<?php $summa = 0; ?>
+<?php $maara = 0; ?>
+
+	<tr>
+		<th>Ostopäivä</th>
+		<th>Ostomäärä</th>
+		<th>Kappalehinta</th>
+		<th>Ostohinta</th>
+		<th>Tosite</th>
+	</tr>
+<?php foreach ($this->ostot AS $tapahtumat) : ?>
+	<?php $summa += $tapahtumat['ostohinta']; ?>
+	<?php $maara += $tapahtumat['ostomaara']; ?>
+	
+	<tr>
+		<td><?= $tapahtumat['ostopaiva']; ?></td>
+		<td><?= $tapahtumat['ostomaara']; ?></td>
+		<td><?= round(($tapahtumat['ostohinta'] / $tapahtumat['ostomaara']), 2); ?></td>
+		<td><?= $tapahtumat['ostohinta']; ?></td>
+		<td><?= $tapahtumat['tositenumero']; ?></td>
+	</tr>
+<?php endforeach ?>
+	<tr>
+		<th>Yhteensä</th>
+		<td><?= $maara; ?></td>
+		<td></td>
+		<td><?= $summa; ?></td>
+		<td><?= count($this->ostot); ?></td>
+	</tr>
+</table>

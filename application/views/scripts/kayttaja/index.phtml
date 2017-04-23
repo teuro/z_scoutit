@@ -1,0 +1,21 @@
+<h1>Käyttäjät</h1>
+
+<table>
+	<tr>
+		<th>Tunnus</th>
+		<th>Etunimi</th>
+		<th>Sukunimi</th>
+		<th>Puhelin</th>
+		<th>Email</th>
+	</tr>
+	
+	<?php foreach ($this->users AS $user) : ?>
+		<tr>
+			<td><a href="<?= $this->url(Array('controller' => 'kayttaja', 'action' => 'paivita', 'id' => $user->get_id())); ?>"><?= $user->get_username(); ?></a></td>
+			<td><?= $user->get_firstname(); ?></td>
+			<td><?= $user->get_surname(); ?></td>
+			<td><?= $user->get_phone(); ?></td>
+			<td><?= $user->get_email(); ?></td>
+		</tr>
+	<?php endforeach ?>
+</table>

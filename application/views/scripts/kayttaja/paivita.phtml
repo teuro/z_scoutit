@@ -1,0 +1,16 @@
+<?php $auth = Zend_Auth::getInstance(); ?>
+<?php if($auth->hasIdentity()) : ?>
+	<?php if ($auth->getIdentity()->oikeustaso->get_rightlevel() > 8 || $auth->getIdentity()->id === $this->user_id) : ?>
+		<?php if ($this->user) : ?>
+			<h1>Käyttäjän <?= $this->user->get_username(); ?> tiedot</h1>
+			<?= $this->userForm; ?>
+			<p class="palsta"><?= $this->message; ?></p>
+		<?php else : ?>
+			<p>Käyttäjän id-numero on väärin tai se puuttuu.</p>
+		<?php endif ?>
+	<?php else : ?>
+		<p class="palsta">Käyttäjän perustiedot näkyvät vain ylläpito-oikeuksilla.</p>
+	<?php endif ?>
+<?php else : ?>
+	<p class="palsta">Sinun tulee olla kirjatuneena, jotta voit hallita käyttäjätietoja.</p>
+<?php endif ?>

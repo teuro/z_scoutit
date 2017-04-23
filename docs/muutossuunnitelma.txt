@@ -1,0 +1,17 @@
+==== Muutossuunnitelma ====
+
+Tähän dokumenttiin lisätään käyttäjien toiveita muutoksista. 
+Pyynnöistä kirjataan itse pyyntö, pyyntöpäivä ja mahdollisesti suunniteltu toteutus versiossa x.x.x
+
++ Materiaaliin kategoriat 2017/04/19 1.0.0
+	* Toiminto on jo olemassa. Tulostus lisätty materiaalilistaukseen.
++ Materiaalin varauslomakkeella värit kuntoon 2017/04/19
+	* Kalenterin tyylit korjattu ja siirretty palvelimelle
++ Varausta ei pysty tekemään kuluvalle päivälle 2017/04/19
+	* Päivän tarkistus muutettu hyväksymään myös kuluvalle päivälle
++ Omat varaukset materiaalilistauksessa 2017/04/19
+	* Lisätty toivottu sarake
++ Varauskalenterin viikko alkaa sunnuntaista muutos maanantaiksi 2017/04/21
+	* Viikko muutettu alkamaan maanantaista 
++ Varauskalenterin nykyinen päivä ei erotu 2017/04/21
+	* Nykyinen päivä muutetut eri väriseksi

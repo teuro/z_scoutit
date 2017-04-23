@@ -1,0 +1,12 @@
+<h1>Varataan tuote <?= $this->tuote->get_name(); ?></h1>
+
+<?php $auth = Zend_Auth::getInstance(); ?>
+<?php if($auth->hasIdentity()) : ?>
+	<p class="palsta">Täytä alle varauksen tiedot, niin saat tuotteen itsellesi.</p>
+
+	<div id="varaa_tuote">
+		<?= $this->varaa_lomake; ?>
+	</div>
+<?php else : ?>
+	<p class="palsta">Kirjaudu ensin sisään.</p>
+<?php endif ?>

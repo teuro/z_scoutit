@@ -1,0 +1,30 @@
+body {
+	background-color: rgb(27, 197, 48);
+	color: rgb(49, 49, 49);
+}
+
+h1, h2, h3 {
+	color: rgb(10, 16, 250);
+}
+
+a {
+	color: rgb(10, 10, 60);
+}
+
+.palsta {
+	width: 500px;
+}
+
+th {
+	text-align: center;
+}
+
+table, tr, th, td {
+	border: 1px solid black;
+}
+
+#kayttaja {
+	position:absolute;
+   top: 10px;
+   right: 10px;
+}

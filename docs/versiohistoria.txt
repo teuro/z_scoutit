@@ -1,0 +1,18 @@
+==== Versiohistoria ====
+
+Tässä dokumentissa kuvataan Järvenpään Scouteille tehty materiaalin hallintajärjestelmä.
+
+== versio 1.0 ==
+
++ Materiaalin lisääminen
++ Materiaalin päivittäminen
++ Materiaalin ostaminen
++ Materiaalin varaaminen
++ Materiaalin kuittaaminen
+
++ Käyttäjän kirjautuminen
++ Käyttäjän lisääminen
++ Käyttäjän päivittäminen
++ Käyttäjien listaaminen
+
++ Varastoarvon näyttäminen

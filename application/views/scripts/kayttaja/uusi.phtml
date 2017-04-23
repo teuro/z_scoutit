@@ -1,0 +1,9 @@
+<h1>Uusi käyttäjä</h1>
+
+<p class="palsta"><?= $this->passwordRequirements; ?></p>
+
+<?= $this->registerForm; ?>
+
+<?php if (strlen($this->errorMessage)) : ?>
+	<p class="palsta virhe"><?= $this->errorMessage; ?></p>
+<?php endif ?>

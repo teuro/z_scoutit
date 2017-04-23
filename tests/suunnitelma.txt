@@ -1,0 +1,10 @@
+==== Testaussuunnitelma ====
+Tuotteen varaaminen
+	* Yritä varata kirjautumatta
+		- Tulee kehoitus kirjatua sisään OK
+	* Yritä varata alkuaika menneisyydessä
+		- Tulee ilmoitus alkuajan olevan menneisyydessä OK
+	* Yritä varata loppuaika ennen alkuaikaa
+		-  Tulee ilmoitus varauksen alkamisesta päättymisen jälkeen OK
+	* Yritä varata liikaa tuotteita
+		- Tulee ilmoitus että haluttu luku ei ole valintalistassa OK

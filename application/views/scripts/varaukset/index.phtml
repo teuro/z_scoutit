@@ -1,0 +1,28 @@
+<h1>Näytetään kaikki varaukset</h1>
+
+	<?php if (count($this->varaukset) > 0) : ?>
+	<table>
+		<tr>
+			<th>Nimi</th>
+			<th>Määrä</th>
+			<th>Paikka</th>
+			<th>Alkaa</th>
+			<th>Loppuu</th>
+			<th>Tunnus</th>
+			<th>Palauta</th>
+		</tr>
+	<?php foreach ($this->varaukset AS $varaus) : ?>
+		<tr>
+			<td><?= $varaus->anna_tuote()->get_name(); ?></td>
+			<td><?= $varaus->anna_tuote()->get_reserved(); ?></td>
+			<td><?= $varaus->anna_tuote()->get_place()->get_name(); ?></td>
+			<td><?= $varaus->anna_alkaa(); ?></td>
+			<td><?= $varaus->anna_loppuu(); ?></td>
+			<td><?= $varaus->anna_varaaja()->get_username(); ?></td>
+			<td><a href="<?= $this->url(Array('controller' => 'varaukset', 'action' => 'palauta', 'id' => $varaus->anna_id())); ?>">palauta</a></td>
+		</tr>
+	<?php endforeach ?>
+	</table>
+<?php else : ?>
+	<p class="palsta">Ei kuittaamattomia varauksia.</p>
+<?php endif ?>

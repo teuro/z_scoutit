@@ -1,0 +1,23 @@
+<h1>Varaston tila</h1>
+
+<table>
+	<tr>
+		<th>Nimi</th>
+		<th>Hyllypaikka</th>
+		<th>Varastoarvo</th>
+	</tr>
+<?php $summa = 0; ?>
+<?php foreach ($this->ostot AS $osto) : ?>
+	<tr>
+		<td><a href="<?= $this->url(Array('controller' => 'varasto', 'action' => 'nayta', 'id' => $osto->get_material()->get_id()), false, true); ?>"><?= $osto->get_material()->get_name(); ?></a></td>
+		<?php $summa += $osto->get_price(); ?>
+		<td><?= $osto->get_material()->get_place()->get_name(); ?></td>
+		<td><?= $osto->get_price() ?></td>
+	</tr>
+<?php endforeach ?>
+	<tr>
+		<th>Yhteensä</th>
+		<td></td>
+		<td><?= $summa; ?></td>
+	</tr>
+</table>

@@ -1,0 +1,26 @@
+<?php if ($this->tuote) : ?>
+	<?php $vapaana = ($this->tuote->get_amount() - $this->tuote->get_reserved()); ?>
+	<?php $auth = Zend_Auth::getInstance(); ?>
+	<h1>Tuotteen <?= $this->tuote->get_name(); ?> tiedot</h1>
+	
+	<?php if($auth->hasIdentity()) : ?>
+		<ul>
+			<li>Paikka:<?= $this->tuote->get_place()->get_name(); ?></li>
+			<li>Varastossa:<?= $this->tuote->get_amount(); ?></li> 
+			<li>Lainassa: <?= $this->tuote->get_reserved(); ?></li>
+			<li>Vapaana: <?= $vapaana; ?></li>
+			<?php if (($vapaana) > 0) : ?>
+				<li><a href="<?= $this->url(Array('controller' => 'varaukset', 'action' => 'varaa', 'id' => $this->tuote->get_id())); ?>">Varaa tuote</a></li>
+			<?php else : ?>
+				<li>Tuote ei ole varattavissa.</li>
+			<?php endif ?>
+			<?php if ($auth->getIdentity()->oikeustaso->get_rightlevel() > 8) : ?>
+				<li><a href="<?= $this->url(Array('controller' => 'tuote', 'action' => 'paivita', 'id' => $this->tuote->get_id())); ?>">päivitä</a></li>
+			<?php endif ?>
+		<?php else : ?>
+			<li>Kirjaudu sisään varataksesi tuotteen</li>
+		</ul>
+	<?php endif ?>
+<?php else : ?>
+	<p>Tuotetta ei löytynyt.</p>
+<?php endif ?>

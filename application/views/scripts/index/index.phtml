@@ -1,0 +1,45 @@
+<h1>Järvenpään scoutit toiminnanohjausjärjestelmä</h1>
+		
+<p class="palsta">Tällä sivulla on järvenpään scouttien materiaalipankki ja lainauksien hallintajärjestelmä. Lainauksia varten tarvittavat tunnukset saat liittymällä jäseneksi.</p>
+
+<h2>Materiaalilistaus</h2>
+
+<p class="palsta">
+	Alla on listattuna kaikki materiaali, joka on scouteilla on käytössä. Klikkaamalla tuotteen nimeä pääset tutustumaan tuotteeseen.
+	Samalla voit myös varata tuotteen itsellesi, jos olet kirjautunut sisään järjestelmään. 
+</p>
+
+<?php $auth = Zend_Auth::getInstance(); ?>
+
+<table>
+	<tr>
+		<th>Nimi</th>
+		<th>Kuvaus</th>
+		<th>Paikka</th>
+		<th>Kategoria</th>
+		<th>Luokka</th>
+		<th>Varastossa</th>
+		<th>Varattu</th>
+		<th>Vapaana</th>
+		<?php if ($auth->hasIdentity()) : ?>
+			<th>Status</th>
+		<?php endif ?>
+	</tr>
+	
+	<?php foreach ($this->tuotteet AS $tuote) : ?>
+		<?php $persons = explode(",", $tuote->get_persons()) ?>
+		<tr>
+			<td><a href="<?= $this->url(Array('controller' => 'tuote', 'action' => 'nayta', 'id' => $tuote->get_id())); ?>"><?= $tuote->get_name(); ?></a></td>
+			<td><?= $tuote->get_description(); ?></td>
+			<td><?= $tuote->get_place()->get_name(); ?></td>
+			<td><?= $tuote->get_category()->get_name(); ?></td>
+			<td><?= $tuote->get_class()->get_name(); ?></td>
+			<td><?= $tuote->get_amount(); ?></td>
+			<td><?= $tuote->get_reserved(); ?></td>
+			<td><?= ($tuote->get_amount() - $tuote->get_reserved()); ?></td>
+			<?php if ($auth->hasIdentity()) : ?>
+				<td><?= (in_array($auth->getIdentity()->id, $persons)) ? "varattu" : ""; ?></td>
+			<?php endif ?>
+		</tr>
+	<?php endforeach ?>
+</table>

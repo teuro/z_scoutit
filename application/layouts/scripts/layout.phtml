@@ -1,0 +1,56 @@
+<!-- application/layouts/scripts/layout.phtml -->
+<?php echo $this->doctype() ?>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Scoutit materiaali</title>
+  <?php $this->headLink()->appendStylesheet($this->baseUrl().'/tyylit/oletus.css'); ?>
+  <?php $this->headLink()->appendStylesheet($this->baseUrl().'/tyylit/datepicker.css'); ?>
+  <?php $this->headLink()->appendStylesheet($this->baseUrl().'/tyylit/normalize.css'); ?>
+  <?php $this->headScript()->appendFile($this->baseUrl() . '/skriptit/jquery.js', 'text/javascript'); ?>
+  <?php $this->headScript()->appendFile($this->baseUrl() . '/skriptit/jquery_ui.js', 'text/javascript')?>
+  <?php $this->headScript()->appendFile($this->baseUrl() . '/skriptit/jquery_ui_full.js', 'text/javascript')?>
+  <?php $this->headScript()->appendFile($this->baseUrl() . '/skriptit/oletus.js', 'text/javascript')?>
+  
+  <?= $this->headScript(); ?>
+  <?= $this->headLink(); ?>
+  <?php $auth = Zend_Auth::getInstance(); ?>
+</head>
+<body>
+<div id="header">
+    <div id="header-logo">
+        <p><img src="<?= $this->baseUrl(); ?>/kuvat/logo2.png" alt="scouttien logo" /></p>
+    </div>
+    <div id="header-navigation">
+		<ul>
+			<li><a href="<?php echo $this->url(array('controller' => 'index'), 'default', true) ?>">Etusivulle</a></li>
+			<?php if($auth->hasIdentity()) : ?>
+				<?php if ($auth->getIdentity()->oikeustaso->get_rightlevel() > 8) : ?>
+					<li>Luo uusi <a href="<?= $this->url(Array('controller' => 'kayttaja', 'action' => 'uusi')); ?>">käyttäjä</a></li>
+					<li>Näytä <a href="<?= $this->url(Array('controller' => 'kayttaja', 'action' => 'index'), false, true); ?>">käyttäjät</a></li>
+					<li>Näytä <a href="<?= $this->url(Array('controller' => 'varaukset', 'action' => 'index'), false, true); ?>">varaukset</a></li>
+					<li>Osta <a href="<?= $this->url(Array('controller' => 'tuote', 'action' => 'osta'), false, true); ?>">tuote</a></li>
+					<li>Näytä <a href="<?= $this->url(Array('controller' => 'varasto', 'action' => 'index'), false, true); ?>">varasto</a></li>
+					<li>Luo uusi <a href="<?= $this->url(Array('controller' => 'tuote', 'action' => 'uusi'), false, true); ?>">tuote</a></li>
+				<?php endif ?>
+			<?php endif ?>
+		</ul>
+    </div>
+</div>
+
+<div id="kayttaja">
+	<?php if($auth->hasIdentity()) : ?>
+		<p>
+			Tervetuloa 
+			<a href="<?= $this->url(Array('controller' => 'profiili', 'action' => 'nayta')); ?>"><?= $auth->getIdentity()->tunnus; ?></a> 
+			kirjaudu <a href="<?= $this->url(Array('controller' => 'tunnistus', 'action' => 'logout')); ?>">ulos</a> 
+		</p>
+	<?php else : ?>
+		<p>kirjaudu <a href="<?= $this->url(Array('controller' => 'tunnistus', 'action' => 'login')); ?>">sisään</a></p>
+	<?php endif ?>
+</div>
+
+<?php echo $this->layout()->content ?>
+ 
+</body>
+</html>

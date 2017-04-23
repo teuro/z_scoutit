@@ -1,0 +1,4 @@
+<?= $this->loginForm; ?>
+<?php if (!empty($this->viesti)) :?>
+	<p class="palsta"><?= $this->viesti; ?> <a href="<?= $this->url(Array('controller' => 'index', 'action' => 'index')); ?>">etusivulle</a></p>
+<?php endif ?>
